@@ -26,13 +26,16 @@ public class DragAndDropSlidersClass {
 
 		DesiredCapabilities caps = new DesiredCapabilities();
 		// Configure your capabilities here
-		caps.setCapability("platform", "Windows 10");
-		caps.setCapability("browserName", "Chrome");
-		caps.setCapability("version", "103.0");
-		caps.setCapability("resolution", "1024x768");
-		caps.setCapability("build", "TestNG With Java");
-		caps.setCapability("name", m.getName() + this.getClass().getName());
-		caps.setCapability("plugin", "git-testng");
+		ChromeOptions browserOptions = new ChromeOptions();
+		browserOptions.setPlatformName("Windows 10");
+		browserOptions.setBrowserVersion("dev");
+		HashMap<String, Object> ltOptions = new HashMap<String, Object>();
+		ltOptions.put("username", "Your LambdaTest Username");
+		ltOptions.put("accessKey", "Your LambdaTest Access Key");
+		ltOptions.put("project", "Untitled");
+		ltOptions.put("w3c", true);
+		ltOptions.put("plugin", "java-java");
+		browserOptions.setCapability("LT:Options", ltOptions);
 
 		String[] Tags = new String[] { "Feature", "Magicleap", "Severe" };
 		caps.setCapability("tags", Tags);
